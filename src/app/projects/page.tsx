@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getAllProjectCards } from "@/lib/sanity/queries";
 import ProjectsGrid from "@/components/projects/ProjectsGrid";
 import Footer from "@/components/Footer";
 
@@ -10,7 +11,9 @@ export const metadata: Metadata = {
     "Things I've designed, built, and shipped. AI systems, products, and tools built at the intersection of engineering, product thinking, and business impact.",
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const projects = await getAllProjectCards();
+
   return (
     <main className="max-w-container-max mx-auto pt-48 px-margin-mobile md:px-gutter">
       {/* Page header */}
@@ -27,11 +30,9 @@ export default function ProjectsPage() {
             engineering depth, product thinking, or business impact. Usually all three.
           </p>
         </div>
-
-        {/* Filter tabs live inside ProjectsGrid (client boundary) */}
       </header>
 
-      <ProjectsGrid />
+      <ProjectsGrid projects={projects} />
 
       <Footer />
     </main>
