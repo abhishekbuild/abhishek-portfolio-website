@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+/* ─── DESIGN.md color tokens ─────────────────────────────────────────────── */
+@theme inline {
+  --color-background:                 #0A0A0A;
+  --color-surface:                    #131313;
+  --color-surface-dim:                #131313;
+  --color-surface-bright:             #3a3939;
+  --color-surface-container-lowest:   #0e0e0e;
+  --color-surface-container-low:      #1c1b1b;
+  --color-surface-container:          #201f1f;
+  --color-surface-container-high:     #2a2a2a;
+  --color-surface-container-highest:  #353534;
+  --color-surface-variant:            #353534;
+  --color-surface-tint:               #d2bbff;
+  --color-on-surface:                 #e5e2e1;
+  --color-on-surface-variant:         #ccc3d8;
+  --color-inverse-surface:            #e5e2e1;
+  --color-inverse-on-surface:         #313030;
+  --color-outline:                    #958da1;
+  --color-outline-variant:            #4a4455;
+  --color-primary:                    #d2bbff;
+  --color-on-primary:                 #3f008e;
+  --color-primary-container:          #7c3aed;
+  --color-on-primary-container:       #ede0ff;
+  --color-inverse-primary:            #732ee4;
+  --color-primary-fixed:              #eaddff;
+  --color-primary-fixed-dim:          #d2bbff;
+  --color-on-primary-fixed:           #25005a;
+  --color-on-primary-fixed-variant:   #5a00c6;
+  --color-secondary:                  #cebdff;
+  --color-on-secondary:               #381385;
+  --color-secondary-container:        #4f319c;
+  --color-on-secondary-container:     #bea8ff;
+  --color-secondary-fixed:            #e8ddff;
+  --color-secondary-fixed-dim:        #cebdff;
+  --color-on-secondary-fixed:         #21005e;
+  --color-on-secondary-fixed-variant: #4f319c;
+  --color-tertiary:                   #ffb784;
+  --color-on-tertiary:                #4f2500;
+  --color-tertiary-container:         #a15100;
+  --color-on-tertiary-container:      #ffe0cd;
+  --color-tertiary-fixed:             #ffdcc6;
+  --color-tertiary-fixed-dim:         #ffb784;
+  --color-on-tertiary-fixed:          #301400;
+  --color-on-tertiary-fixed-variant:  #713700;
+  --color-error:                      #ffb4ab;
+  --color-on-error:                   #690005;
+  --color-error-container:            #93000a;
+  --color-on-error-container:         #ffdad6;
+  --color-on-background:              #e5e2e1;
+
+  /* ─── DESIGN.md font families ───────────────────────────────────────────── */
+  --font-sans:             var(--font-inter);
+  --font-display:          var(--font-geist);
+  --font-mono:             var(--font-geist-mono);
+  /* Stitch composite font-family utilities */
+  --font-display-lg:         var(--font-geist);
+  --font-display-lg-mobile:  var(--font-geist);
+  --font-headline-md:        var(--font-geist);
+  --font-body-lg:            var(--font-inter);
+  --font-body-md:            var(--font-inter);
+  --font-label-caps:         var(--font-geist);
+  --font-mono-data:          var(--font-geist-mono);
+
+  /* ─── DESIGN.md spacing tokens ──────────────────────────────────────────── */
+  --spacing-section-gap:    160px;
+  --spacing-gutter:         32px;
+  --spacing-margin-mobile:  24px;
+}
+
+/* ─── Stitch typography scale as custom utilities ───────────────────────── */
+@utility text-display-lg {
+  font-size: 72px;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+@utility text-display-lg-mobile {
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+@utility text-headline-md {
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+@utility text-body-lg {
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+@utility text-body-md {
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+@utility text-label-caps {
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+@utility text-mono-data {
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+/* ─── Max-width container ────────────────────────────────────────────────── */
+@utility max-w-container-max {
+  max-width: 1200px;
+}
+
+/* ─── Scrollbar hide ────────────────────────────────────────────────────── */
+@utility scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background-color: #0A0A0A;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0A0A0A;
+  color: #e5e2e1;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── 2% grain overlay (DESIGN.md: "filmic quality") ────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ─── Hero radial glow (DESIGN.md: "Soft Glows") ────────────────────────── */
+.hero-glow {
+  background: radial-gradient(circle at center, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+}
+
+/* ─── Marquee ticker ─────────────────────────────────────────────────────── */
+@keyframes marquee-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 40s linear infinite;
+}
+
+/* ─── Subtle dot-grid background (project cards) ────────────────────────── */
+.subtle-grid {
+  background-image: radial-gradient(circle at 1px 1px, #1a1a1a 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* ─── Perspective callout gradient left border ───────────────────────────── */
+.perspective-line {
+  border-left-width: 2px;
+  border-image: linear-gradient(to bottom, #7C3AED, transparent) 1;
+}
+
+/* ─── Bottom section radial glow ─────────────────────────────────────────── */
+.glow-hint {
+  background: radial-gradient(600px circle at center, rgba(124, 58, 237, 0.05), transparent 70%);
+}
+
+/* ─── No-scrollbar alias ─────────────────────────────────────────────────── */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Action link underline expand from center (DESIGN.md: "Action Link") ── */
+.underline-hover {
+  position: relative;
+}
+.underline-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background-color: white;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+.underline-hover:hover::after {
+  width: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
