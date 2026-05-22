@@ -220,6 +220,24 @@ body::before {
   width: 100%;
 }
 
+/* ─── Case study scroll spy ─────────────────────────────────────────────── */
+.scroll-spy-active {
+  color: #d2bbff !important;
+  border-left-color: #7c3aed !important;
+}
+
+/* ─── Code block ─────────────────────────────────────────────────────────── */
+.code-block {
+  background: #141414;
+  border: 1px solid #1a1a1a;
+  font-family: var(--font-geist-mono);
+}
+
+/* ─── Gradient glow callout (business section) ───────────────────────────── */
+.gradient-glow {
+  background: radial-gradient(circle at center, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+}
+
 *,
 *::before,
 *::after {
